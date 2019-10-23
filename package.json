@@ -1,25 +1,36 @@
 {
-  "name": "watcourse",
-  "version": "1.0.0",
-  "description": "A Simple progressive web app allowing UW students to look up course schedule",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KWCSSA/watcourse.git"
-  },
-  "keywords": [
-    "KWCSSA",
-    "UW",
-    "UWaterloo",
-    "watcourse"
-  ],
-  "author": "Terry Wang",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/KWCSSA/watcourse/issues"
-  },
-  "homepage": "https://github.com/KWCSSA/watcourse#readme"
+	"name": "watcourse",
+	"version": "1.0.0",
+	"description": "A progressive web app allowing UWaterloo students to look up course schedules",
+	"main": "index.js",
+	"scripts": {
+		"build": "npm run build --prefix client",
+		"dev-all": "concurrently \"npm run dev-server\" \"npm start --prefix client\"",
+		"dev-server": "nodemon index.js",
+		"pm2": "NODE_ENV=production pm2 start index.js --name watcourse"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/KWCSSA/watcourse.git"
+	},
+	"keywords": [
+		"KWCSSA",
+		"UW",
+		"UWaterloo",
+		"watcourse"
+	],
+	"author": "Terry Wang",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/KWCSSA/watcourse/issues"
+	},
+	"homepage": "https://github.com/KWCSSA/watcourse#readme",
+	"devDependencies": {
+		"concurrently": "^5.0.0",
+		"cors": "^2.8.5",
+		"nodemon": "^1.19.4"
+	},
+	"dependencies": {
+		"express": "^4.17.1"
+	}
 }
