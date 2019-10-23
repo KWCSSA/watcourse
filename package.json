@@ -1,0 +1,25 @@
+{
+  "name": "watcourse",
+  "version": "1.0.0",
+  "description": "A Simple progressive web app allowing UW students to look up course schedule",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KWCSSA/watcourse.git"
+  },
+  "keywords": [
+    "KWCSSA",
+    "UW",
+    "UWaterloo",
+    "watcourse"
+  ],
+  "author": "Terry Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KWCSSA/watcourse/issues"
+  },
+  "homepage": "https://github.com/KWCSSA/watcourse#readme"
+}
