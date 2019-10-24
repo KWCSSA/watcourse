@@ -6,6 +6,7 @@
 	"scripts": {
 		"build": "npm run build --prefix client",
 		"dev-all": "concurrently \"npm run dev-server\" \"npm start --prefix client\"",
+		"dev-client": "npm start --prefix client",
 		"dev-server": "nodemon index.js",
 		"pm2": "NODE_ENV=production pm2 start index.js --name watcourse"
 	},
@@ -13,12 +14,7 @@
 		"type": "git",
 		"url": "git+https://github.com/KWCSSA/watcourse.git"
 	},
-	"keywords": [
-		"KWCSSA",
-		"UW",
-		"UWaterloo",
-		"watcourse"
-	],
+	"keywords": [ "KWCSSA", "UW", "UWaterloo", "watcourse" ],
 	"author": "Terry Wang",
 	"license": "MIT",
 	"bugs": {
