@@ -6,7 +6,7 @@ module.exports = app => {
 			method: 'GET',
 			url: 'https://openapi.data.uwaterloo.ca/v3/subjects',
 			headers: {
-				'X-API-KEY': process.env.UW_API_KEY
+				'X-API-KEY': process.env.UW_API_KEY_V3
 			},
 			json: true
 		};
@@ -26,7 +26,7 @@ module.exports = app => {
 			method: 'GET',
 			url: 'https://openapi.data.uwaterloo.ca/v3/courses',
 			headers: {
-				'X-API-KEY': process.env.UW_API_KEY
+				'X-API-KEY': process.env.UW_API_KEY_V3
 			},
 			json: true
 		};
