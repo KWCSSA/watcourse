@@ -9,12 +9,14 @@ const logFormat = winston.format.combine(
 	winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
 );
 
+transports = [ new winston.transports.Console() ];
+if (process.env.NODE_ENV === 'production') {
+	transports.push(new winston.transports.File({ filename: path.join(__dirname, '..', 'logs', 'system.log') }));
+}
+
 const logger = winston.createLogger({
 	format: logFormat,
-	transports: [
-		new winston.transports.Console(),
-		new winston.transports.File({ filename: path.join(__dirname, '..', 'logs', 'system.log') })
-	]
+	transports
 });
 
 module.exports = logger;
