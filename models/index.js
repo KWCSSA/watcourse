@@ -1,1 +1,1 @@
-require('./CourseModel');
+require('./Course');

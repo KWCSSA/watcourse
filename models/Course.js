@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
-const { Schema } =  mongoose;
+const { Schema } = mongoose;
 const courseSchema = new Schema({
-  course_id: String,
-  subject: String,
-  catalog_number: String,
-  title: String,
+	subject: String,
+	catalogNumber: String,
+	title: String,
+	term: Number,
+	lastUpdated: Number
 });
+courseSchema.index({ term: -1 });
 
 mongoose.model('course', courseSchema);
