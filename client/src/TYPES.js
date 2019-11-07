@@ -1,0 +1,1 @@
+export const FETCH_COURSE_LIST = 'FETCH_COURSE_LIST';

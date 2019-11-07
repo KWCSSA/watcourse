@@ -1,0 +1,44 @@
+.navbar-root {
+	position: fixed;
+	display: block;
+	width: 100vw;
+	bottom: 0;
+	background-color: #ffd54f;
+}
+
+#navbar-row {
+	width: 100%;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.navbar-option {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 30px;
+	flex-direction: column;
+	color: #000;
+	text-decoration: none;
+	font-weight: 700;
+	border-top: 1px solid #d3d3d3;
+}
+
+.inactive {
+	color: #6c757d;
+	font-weight: 400;
+}
+
+.navbar-option:hover {
+	color: #000;
+	text-decoration: none;
+}
+
+i.navbar-option-icon {
+	font-size: 35px;
+}
+
+.navbar-option-text {
+	font-size: 12px;
+	font-weight: inherit;
+}
