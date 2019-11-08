@@ -4,6 +4,7 @@
 	width: 100vw;
 	bottom: 0;
 	background-color: #ffd54f;
+	border-top: 1px solid #d3d3d3;
 }
 
 #navbar-row {
@@ -21,11 +22,10 @@
 	color: #000;
 	text-decoration: none;
 	font-weight: 700;
-	border-top: 1px solid #d3d3d3;
 }
 
 .inactive {
-	color: #6c757d;
+	color: #808080;
 	font-weight: 400;
 }
 

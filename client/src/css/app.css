@@ -18,9 +18,12 @@
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', ImpactTTF, sans-serif;
 	text-align: center;
 	font-size: 30px;
+	border-bottom: 1px solid #d3d3d3;
 }
 
 .app-area {
 	margin-top: 45px;
 	margin-bottom: 84px;
+	padding-left: 10px;
+	padding-right: 10px;
 }

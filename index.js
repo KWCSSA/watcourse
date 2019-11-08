@@ -24,6 +24,8 @@ db.once('open', () => {
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Secure HTTP headers
 app.use(helmet());
 
 // Initiate mongoose models
