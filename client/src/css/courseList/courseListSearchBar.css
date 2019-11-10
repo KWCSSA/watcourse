@@ -1,0 +1,33 @@
+.list-search-icon {
+	flex: 1 1 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #808080;
+}
+
+.list-search-area {
+	flex: 15 1 auto;
+	display: flex;
+}
+
+.list-search-clear {
+	flex: 2 1 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #808080;
+	cursor: pointer;
+}
+
+.list-search-input {
+	width: 100%;
+	border: none;
+	padding: 0px 5px 0px 5px;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.list-search-input:focus {
+	outline: none;
+}

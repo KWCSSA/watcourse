@@ -28,6 +28,11 @@ app.use(bodyParser.json());
 // Secure HTTP headers
 app.use(helmet());
 
+// Allow cors in development
+if (process.env.NODE_ENV !== 'production') {
+	app.use(require('cors')());
+}
+
 // Initiate mongoose models
 require('./models');
 

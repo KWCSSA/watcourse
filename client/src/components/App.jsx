@@ -1,16 +1,23 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import '../css/app.css';
 
+import * as actions from '../actions';
+import { getTermCode } from '../utils/termCodeHelper';
 import NavBar from './NavBar';
+import CourseList from './courseList/CourseList';
 
 const Home = () => <h1>Home</h1>;
-const CourseList = () => <h1>Course List</h1>;
 const BookMarkList = () => <h1>Book Mark List</h1>;
 const NotFound404 = () => <h1>404 Not Found</h1>;
 
 class App extends React.Component {
+	componentDidMount() {
+		this.props.fetchCourseList(getTermCode().currTermCode);
+	}
+
 	render() {
 		return (
 			<div className='app-root'>
@@ -24,11 +31,13 @@ class App extends React.Component {
 							<Route component={NotFound404} />
 						</Switch>
 					</div>
-					<NavBar />
+					<div className='app-navs'>
+						<NavBar />
+					</div>
 				</BrowserRouter>
 			</div>
 		);
 	}
 }
 
-export default App;
+export default connect(null, actions)(App);

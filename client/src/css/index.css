@@ -1,4 +1,10 @@
 /* Global CSS file */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
 body {
-	background-color: #ffffff;
+	background-color: #000;
+	font-family: Arial, Helvetica, sans-serif;
 }

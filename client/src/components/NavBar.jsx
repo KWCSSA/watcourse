@@ -5,7 +5,13 @@ import { Link } from 'react-router-dom';
 import '../css/navBar.css';
 
 export default class NavBar extends React.Component {
-	state = { activePath: 'home' };
+	state = { activePath: '/' };
+
+	componentDidMount() {
+		this.setState({
+			activePath: window.location.pathname
+		});
+	}
 
 	navClick(path) {
 		this.setState({
@@ -13,14 +19,14 @@ export default class NavBar extends React.Component {
 		});
 	}
 
-	renderNavOption(to, path, text, icon) {
+	renderNavOption(path, text, icon) {
 		return this.state.activePath === path ? (
-			<Link className='col navbar-option' key={to} to={to} onClick={() => this.navClick(path)}>
+			<Link className='col navbar-option' key={path} to={path} onClick={() => this.navClick(path)}>
 				<i className='material-icons navbar-option-icon'>{icon}</i>
 				<div className='navbar-option-text'>{text}</div>
 			</Link>
 		) : (
-			<Link className='col navbar-option inactive' key={to} to={to} onClick={() => this.navClick(path)}>
+			<Link className='col navbar-option inactive' key={path} to={path} onClick={() => this.navClick(path)}>
 				<i className='material-icons navbar-option-icon'>{icon}</i>
 				<div className='navbar-option-text'>{text}</div>
 			</Link>
@@ -30,29 +36,24 @@ export default class NavBar extends React.Component {
 	render() {
 		const listOfOptions = [
 			{
-				to: '/',
-				path: 'home',
+				path: '/',
 				text: '首页',
 				icon: 'home'
 			},
 			{
-				to: '/courses',
-				path: 'courses',
+				path: '/courses',
 				text: '查询',
 				icon: 'search'
 			},
 			{
-				to: '/bookmarks',
-				path: 'bookmarks',
+				path: '/bookmarks',
 				text: '收藏',
 				icon: 'bookmark'
 			}
 		];
 		return (
-			<Nav className='navbar-root'>
-				<Row id='navbar-row'>
-					{listOfOptions.map(({ to, path, text, icon }) => this.renderNavOption(to, path, text, icon))}
-				</Row>
+			<Nav>
+				<Row id='navbar-row'>{listOfOptions.map(({ path, text, icon }) => this.renderNavOption(path, text, icon))}</Row>
 			</Nav>
 		);
 	}

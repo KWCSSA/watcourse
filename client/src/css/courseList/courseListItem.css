@@ -1,0 +1,18 @@
+.list-item {
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.list-item-code {
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 18px;
+}
+
+.list-item-title {
+	border-bottom: 1px solid #d3d3d3;
+	font-size: 11px;
+}
