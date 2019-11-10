@@ -59,7 +59,17 @@ exports.getCourseList = term => {
 					cleanCourseLists();
 					updateCourseList(term)
 						.then(courses => {
-							resolve(courses);
+							resolve(
+								courses.sort((courseA, courseB) => {
+									if (courseA.subject > courseB.subject) {
+										return 1;
+									} else if (courseA.subject < courseB.subject) {
+										return -1;
+									} else {
+										return Number(courseA.catalogNumber) - Number(courseB.catalogNumber);
+									}
+								})
+							);
 						})
 						.catch(err => {
 							reject(err);
@@ -71,7 +81,17 @@ exports.getCourseList = term => {
 						logger.log('info', `Course list for term: ${term} is expired`);
 						updateCourseList(term);
 					}
-					resolve(courses);
+					resolve(
+						courses.sort((courseA, courseB) => {
+							if (courseA.subject > courseB.subject) {
+								return 1;
+							} else if (courseA.subject < courseB.subject) {
+								return -1;
+							} else {
+								return Number(courseA.catalogNumber) - Number(courseB.catalogNumber);
+							}
+						})
+					);
 				}
 			})
 			.catch(err => reject(err));
