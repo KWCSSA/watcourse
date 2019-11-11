@@ -15,6 +15,10 @@ class CourseDetails extends React.Component {
 		this.props.fetchCourseDetails(term, subject, catalogNumber);
 	}
 
+	componentWillUnmount() {
+		this.props.clearCourseDetails();
+	}
+
 	render() {
 		console.log(this.props.courseDetails);
 		if (this.props.courseDetails) {

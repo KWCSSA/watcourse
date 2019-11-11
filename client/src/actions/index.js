@@ -23,3 +23,7 @@ export const fetchCourseDetails = (term, subject, catalogNumber) => dispatch => 
 		}
 	});
 };
+
+export const clearCourseDetails = () => {
+	return { type: TYPES.FETCH_COURSE_DETAILS, payload: null };
+};
