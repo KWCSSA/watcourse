@@ -1,4 +1,6 @@
 /* Global CSS file */
+@import url('https://fonts.googleapis.com/css?family=Roboto|Noto+Sans+SC&display=swap');
+
 * {
 	padding: 0px;
 	margin: 0px;
@@ -6,5 +8,5 @@
 
 body {
 	background-color: #000;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Roboto', 'Noto Sans SC', sans-serif;
 }

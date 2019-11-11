@@ -43,7 +43,7 @@ module.exports = app => {
 									prerequisites,
 									antirequisites,
 									corequisites,
-									terms_offered,
+									termsOffered: terms_offered,
 									notes,
 									sections: response.data.data.map(sec => {
 										const {
