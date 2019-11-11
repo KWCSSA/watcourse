@@ -15,3 +15,11 @@ export const fetchCourseList = term => dispatch => {
 		}
 	});
 };
+
+export const fetchCourseDetails = (term, subject, catalogNumber) => dispatch => {
+	axios.get(`${serverAddress}/api/course/${term}/${subject}/${catalogNumber}`).then(response => {
+		if (!response.data.error) {
+			dispatch({ type: TYPES.FETCH_COURSE_DETAILS, payload: response.data.data });
+		}
+	});
+};

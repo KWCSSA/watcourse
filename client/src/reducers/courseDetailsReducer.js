@@ -1,8 +1,8 @@
-import { UPDATE_SEARCH_TERM } from '../TYPES';
+import { FETCH_COURSE_DETAILS } from '../TYPES';
 
 export default (state = null, action) => {
 	switch (action.type) {
-		case UPDATE_SEARCH_TERM: {
+		case FETCH_COURSE_DETAILS: {
 			return action.payload || [];
 		}
 		default: {
