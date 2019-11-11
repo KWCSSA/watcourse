@@ -8,6 +8,7 @@ import * as actions from '../actions';
 import { getTermCode } from '../utils/termCodeHelper';
 import NavBar from './NavBar';
 import CourseList from './courseList/CourseList';
+import AppTitle from './AppTitle';
 
 const Home = () => <h1>Home</h1>;
 const BookMarkList = () => <h1>Book Mark List</h1>;
@@ -21,7 +22,7 @@ class MainPages extends React.Component {
 	render() {
 		return (
 			<div className='app-root'>
-				<div className='app-title'>WATCOURSE</div>
+				<AppTitle />
 				<div className='app-area'>
 					<Switch>
 						<Route exact path='/' component={Home} />

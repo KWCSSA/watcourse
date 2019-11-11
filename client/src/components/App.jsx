@@ -2,11 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import MainPages from './MainPages';
-
-const CourseDetail = props => {
-	console.log(props.match.params);
-	return <div style={{ background: 'red', height: '100vh', width: '100vw' }}>{123}</div>;
-};
+import CourseDetails from './courseDetails/CourseDetails';
 
 class App extends React.Component {
 	render() {
@@ -14,7 +10,7 @@ class App extends React.Component {
 			<React.Fragment>
 				<BrowserRouter>
 					<Switch>
-						<Route exact path='/course/:term/:subject/:catalogNumber' component={CourseDetail} />
+						<Route exact path='/course/:term/:subject/:catalogNumber' component={CourseDetails} />
 						<Route path='/' component={MainPages} />
 					</Switch>
 				</BrowserRouter>

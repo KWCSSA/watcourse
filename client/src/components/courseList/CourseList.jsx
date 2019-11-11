@@ -33,7 +33,7 @@ class CourseList extends React.Component {
 	}
 
 	handleListItemClick(course) {
-		console.log(course);
+		this.props.history.push(`/course/${course.term}/${course.subject}/${course.catalogNumber}`);
 	}
 
 	renderListItem({ index, style, key, parent }) {

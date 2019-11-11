@@ -1,0 +1,16 @@
+@font-face {
+	font-family: ImpactTTF;
+	src: url('impact.ttf') format('truetype');
+}
+
+.app-title {
+	position: fixed;
+	z-index: 999;
+	display: block;
+	width: 100vw;
+	background-color: #ffd54f;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', ImpactTTF, sans-serif;
+	text-align: center;
+	font-size: 30px;
+	border-bottom: 1px solid #d3d3d3;
+}
