@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { List, AutoSizer } from 'react-virtualized';
+import AutoSizer from 'react-virtualized-auto-sizer';
+import { FixedSizeList as List } from 'react-window';
 import { Spinner } from 'react-bootstrap';
 
 import '../../css/courseList/courseList.css';
@@ -17,6 +18,8 @@ class CourseList extends React.Component {
 		searchTerm: ''
 	};
 
+	listRef = React.createRef();
+
 	componentDidMount() {
 		this.setState({
 			showTerm: getTermCode().currTermCode,
@@ -26,9 +29,18 @@ class CourseList extends React.Component {
 
 	componentDidUpdate() {
 		if (this.props.courseList && JSON.stringify(this.state.list) !== JSON.stringify(this.props.courseList.courses)) {
+			const sortedCourseList = this.props.courseList.courses.sort((courseA, courseB) => {
+				if (courseA.subject > courseB.subject) {
+					return 1;
+				} else if (courseA.subject < courseB.subject) {
+					return -1;
+				} else {
+					return parseInt(courseA.catalogNumber) - parseInt(courseB.catalogNumber);
+				}
+			});
 			this.setState({
-				list: this.props.courseList.courses,
-				listToShow: this.props.courseList.courses
+				list: sortedCourseList.slice(0),
+				listToShow: sortedCourseList.slice(0)
 			});
 		}
 		if (this.state.list && this.props.searchTerm && this.state.searchTerm !== this.props.searchTerm.value) {
@@ -56,7 +68,7 @@ class CourseList extends React.Component {
 									} else if (courseA.subject < courseB.subject) {
 										return -1;
 									} else {
-										return Number(courseA.catalogNumber) - Number(courseB.catalogNumber);
+										return parseInt(courseA.catalogNumber) - parseInt(courseB.catalogNumber);
 									}
 								})
 			});
@@ -67,15 +79,9 @@ class CourseList extends React.Component {
 		this.props.history.push(`/course/${course.term}/${course.subject}/${course.catalogNumber}`);
 	}
 
-	renderListItem({ index, style, key, parent }) {
+	renderListItem({ index, style }) {
 		return (
-			<CourseListItem
-				style={style}
-				key={key}
-				parent={parent}
-				rowIndex={index}
-				handleClick={this.handleListItemClick.bind(this)}
-			>
+			<CourseListItem style={style} handleClick={this.handleListItemClick.bind(this)}>
 				{this.state.listToShow[index]}
 			</CourseListItem>
 		);
@@ -83,6 +89,7 @@ class CourseList extends React.Component {
 
 	handleSearchTextUpdate(value) {
 		this.props.updateSearchTerm(value);
+		this.listRef.current.scrollToItem(0);
 	}
 
 	handleSearchTermUpdate(value) {
@@ -107,12 +114,13 @@ class CourseList extends React.Component {
 								<List
 									height={height}
 									width={width}
-									rowHeight={45}
-									rowCount={this.state.listToShow.length}
-									rowRenderer={this.renderListItem.bind(this)}
-									scrollToIndex={0}
+									itemSize={45}
+									itemCount={this.state.listToShow.length}
+									ref={this.listRef}
 									style={{ outline: 'none' }}
-								/>
+								>
+									{this.renderListItem.bind(this)}
+								</List>
 							)}
 						</AutoSizer>
 					</div>
