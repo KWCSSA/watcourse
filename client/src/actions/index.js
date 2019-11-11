@@ -7,8 +7,7 @@ const serverAddress = process.env.NODE_ENV === 'production' ? '' : 'http://local
 export const fetchCourseList = term => dispatch => {
 	axios.get(`${serverAddress}/api/courses/${term}`).then(response => {
 		if (!response.data.error) {
-			console.log(response.data.data.length);
-			dispatch({ type: TYPES.FETCH_COURSE_LIST, payload: response.data.data });
+			dispatch({ type: TYPES.FETCH_COURSE_LIST, payload: { term, courses: response.data.data } });
 		}
 	});
 };

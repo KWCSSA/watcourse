@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List, AutoSizer } from 'react-virtualized';
+import { Spinner } from 'react-bootstrap';
 
 import '../../css/courseList/courseList.css';
 
+import * as actions from '../../actions';
 import { getTermCode } from '../../utils/termCodeHelper';
 import CourseListItem from './CourseListItem';
 import CourseListSearchBar from './CourseListSearchBar';
@@ -11,10 +13,7 @@ import CourseListSearchBar from './CourseListSearchBar';
 class CourseList extends React.Component {
 	state = {
 		list: null,
-		listToShow: [
-			{ subject: 'CS', catalogNumber: '136', title: 'Computational Methods for Partial Differential Equations' },
-			{ subject: 'CS', catalogNumber: '136', title: 'Computational Methods for Partial Differential Equations' }
-		]
+		listToShow: null
 	};
 
 	componentDidMount() {
@@ -25,10 +24,10 @@ class CourseList extends React.Component {
 	}
 
 	componentDidUpdate() {
-		if (JSON.stringify(this.state.list) !== JSON.stringify(this.props.courseList)) {
+		if (this.props.courseList && JSON.stringify(this.state.list) !== JSON.stringify(this.props.courseList.courses)) {
 			this.setState({
-				list: this.props.courseList,
-				listToShow: this.props.courseList
+				list: this.props.courseList.courses,
+				listToShow: this.props.courseList.courses
 			});
 		}
 	}
@@ -51,7 +50,7 @@ class CourseList extends React.Component {
 		);
 	}
 
-	handleSearchUpdate(value) {
+	handleSearchTextUpdate(value) {
 		this.setState({
 			listToShow: this.state.list
 				.filter(course => {
@@ -75,20 +74,29 @@ class CourseList extends React.Component {
 		});
 	}
 
+	handleSearchTermUpdate(value) {
+		this.setState({
+			listToShow: null
+		});
+
+		this.props.fetchCourseList(value);
+	}
+
 	render() {
 		if (this.state.listToShow) {
 			return (
 				<React.Fragment>
-					<div className='list-search'>
-						<CourseListSearchBar onUpdate={this.handleSearchUpdate.bind(this)} />
-					</div>
+					<CourseListSearchBar
+						onTextUpdate={this.handleSearchTextUpdate.bind(this)}
+						onTermUpdate={this.handleSearchTermUpdate.bind(this)}
+					/>
 					<div className='list-items'>
 						<AutoSizer>
 							{({ height, width }) => (
 								<List
 									height={height}
 									width={width}
-									rowHeight={40}
+									rowHeight={45}
 									rowCount={this.state.listToShow.length}
 									rowRenderer={this.renderListItem.bind(this)}
 									scrollToIndex={0}
@@ -100,7 +108,11 @@ class CourseList extends React.Component {
 				</React.Fragment>
 			);
 		} else {
-			return <div>Loading...</div>;
+			return (
+				<div className='h-100 w-100 d-flex justify-content-center align-items-center'>
+					<Spinner animation='border' style={{ height: '30px', width: '30px' }} />
+				</div>
+			);
 		}
 	}
 }
@@ -111,4 +123,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps)(CourseList);
+export default connect(mapStateToProps, actions)(CourseList);

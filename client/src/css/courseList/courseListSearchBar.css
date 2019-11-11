@@ -1,3 +1,18 @@
+.list-search-root {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 10px 5px 5px 5px;
+	border-bottom: 1px solid #d3d3d3;
+}
+
+.list-search-code {
+	flex: 0 1 auto;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+}
+
 .list-search-icon {
 	flex: 1 1 auto;
 	display: flex;
@@ -30,4 +45,17 @@
 
 .list-search-input:focus {
 	outline: none;
+}
+
+.list-search-term {
+	width: 100%;
+	padding-right: 3px;
+}
+
+.list-search-term-select {
+	width: 100%;
+	padding: 2px 3px 2px 3px;
+	border: none;
+	outline: none;
+	font-size: 16px;
 }
