@@ -1,0 +1,7 @@
+.details-root {
+	height: 100vh;
+	width: 100vw;
+	padding: 47px 5px 0px 5px;
+	overflow-y: scroll;
+	background: #fff;
+}

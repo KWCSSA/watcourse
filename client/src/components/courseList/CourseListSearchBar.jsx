@@ -25,6 +25,16 @@ class CourseListSearchBar extends React.Component {
 				selectValue: this.props.courseList.term
 			});
 		}
+		if (this.props.searchTerm && this.state.inputValue !== this.props.searchTerm.value) {
+			this.setState({
+				inputValue: this.props.searchTerm.value
+			});
+		}
+		if (this.state.inputValue.length > 0 && !this.state.showClear) {
+			this.setState({
+				showClear: true
+			});
+		}
 	}
 
 	handleInputChange(value) {
@@ -113,7 +123,8 @@ class CourseListSearchBar extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		courseList: state.courseList
+		courseList: state.courseList,
+		searchTerm: state.searchTerm
 	};
 }
 

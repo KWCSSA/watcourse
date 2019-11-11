@@ -1,11 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import '../css/mainPages.css';
 
-import * as actions from '../actions';
-import { getTermCode } from '../utils/termCodeHelper';
 import NavBar from './NavBar';
 import CourseList from './courseList/CourseList';
 import AppTitle from './AppTitle';
@@ -15,10 +12,6 @@ const BookMarkList = () => <h1>Book Mark List</h1>;
 const NotFound404 = () => <h1>404 Not Found</h1>;
 
 class MainPages extends React.Component {
-	componentDidMount() {
-		this.props.fetchCourseList(getTermCode().currTermCode);
-	}
-
 	render() {
 		return (
 			<div className='app-root'>
@@ -39,4 +32,4 @@ class MainPages extends React.Component {
 	}
 }
 
-export default connect(null, actions)(MainPages);
+export default MainPages;

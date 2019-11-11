@@ -13,4 +13,30 @@
 	text-align: center;
 	font-size: 30px;
 	border-bottom: 1px solid #d3d3d3;
+	display: flex;
+	flex-direction: row;
+}
+
+.app-title-left {
+	width: 10%;
+	flex: 0 1 auto;
+	display: flex;
+	align-items: center;
+}
+
+.app-title-center {
+	flex: 1 1 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.app-title-right {
+	width: 10%;
+	flex: 0 1 auto;
+	display: flex;
+}
+
+i.app-title-icon {
+	font-size: 35px;
 }

@@ -1,10 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import * as actions from '../actions';
+import { getTermCode } from '../utils/termCodeHelper';
 import MainPages from './MainPages';
 import CourseDetails from './courseDetails/CourseDetails';
 
 class App extends React.Component {
+	componentDidMount() {
+		this.props.fetchCourseList(getTermCode().currTermCode);
+	}
+
 	render() {
 		return (
 			<React.Fragment>
@@ -19,4 +26,4 @@ class App extends React.Component {
 	}
 }
 
-export default App;
+export default connect(null, actions)(App);

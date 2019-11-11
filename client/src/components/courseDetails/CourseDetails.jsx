@@ -1,17 +1,22 @@
 import React from 'react';
 
+import '../../css/courseDetails/courseDetails.css';
+
 import AppTitle from '../AppTitle';
 
 class CourseDetails extends React.Component {
 	state = { bookmarked: false };
 
-	componentDidMount() {}
+	componentDidMount() {
+		console.log(this.props);
+	}
 
 	render() {
 		return (
-			<div>
-				<AppTitle />
-			</div>
+			<React.Fragment>
+				<AppTitle displayReturn history={this.props.history} />
+				<div className='details-root'>C</div>
+			</React.Fragment>
 		);
 	}
 }

@@ -13,7 +13,8 @@ import CourseListSearchBar from './CourseListSearchBar';
 class CourseList extends React.Component {
 	state = {
 		list: null,
-		listToShow: null
+		listToShow: null,
+		searchTerm: ''
 	};
 
 	componentDidMount() {
@@ -28,6 +29,36 @@ class CourseList extends React.Component {
 			this.setState({
 				list: this.props.courseList.courses,
 				listToShow: this.props.courseList.courses
+			});
+		}
+		if (this.state.list && this.props.searchTerm && this.state.searchTerm !== this.props.searchTerm.value) {
+			this.setState({
+				searchTerm: this.props.searchTerm.value,
+				listToShow:
+					this.props.searchTerm.length === 0
+						? this.state.list
+						: this.state.list
+								.filter(course => {
+									var targetSubject = this.props.searchTerm.value
+										.replace(/[0-9]/g, '')
+										.replace(/\s/g, '')
+										.toUpperCase();
+									var targetCatalogNum = this.props.searchTerm.value.replace(/\D/g, '');
+									if (course.subject.includes(targetSubject) && course.catalogNumber.includes(targetCatalogNum)) {
+										return true;
+									} else {
+										return false;
+									}
+								})
+								.sort((courseA, courseB) => {
+									if (courseA.subject > courseB.subject) {
+										return 1;
+									} else if (courseA.subject < courseB.subject) {
+										return -1;
+									} else {
+										return Number(courseA.catalogNumber) - Number(courseB.catalogNumber);
+									}
+								})
 			});
 		}
 	}
@@ -51,27 +82,7 @@ class CourseList extends React.Component {
 	}
 
 	handleSearchTextUpdate(value) {
-		this.setState({
-			listToShow: this.state.list
-				.filter(course => {
-					var targetSubject = value.replace(/[0-9]/g, '').replace(/\s/g, '').toUpperCase();
-					var targetCatalogNum = value.replace(/\D/g, '');
-					if (course.subject.includes(targetSubject) && course.catalogNumber.includes(targetCatalogNum)) {
-						return true;
-					} else {
-						return false;
-					}
-				})
-				.sort((courseA, courseB) => {
-					if (courseA.subject > courseB.subject) {
-						return 1;
-					} else if (courseA.subject < courseB.subject) {
-						return -1;
-					} else {
-						return Number(courseA.catalogNumber) - Number(courseB.catalogNumber);
-					}
-				})
-		});
+		this.props.updateSearchTerm(value);
 	}
 
 	handleSearchTermUpdate(value) {
@@ -119,7 +130,8 @@ class CourseList extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		courseList: state.courseList
+		courseList: state.courseList,
+		searchTerm: state.searchTerm
 	};
 }
 
