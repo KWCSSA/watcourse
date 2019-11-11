@@ -4,10 +4,10 @@ import { Route, Switch } from 'react-router-dom';
 import '../css/mainPages.css';
 
 import NavBar from './NavBar';
+import Home from './home/Home';
 import CourseList from './courseList/CourseList';
 import AppTitle from './AppTitle';
 
-const Home = () => <h1>Home</h1>;
 const BookMarkList = () => <h1>Book Mark List</h1>;
 const NotFound404 = () => <h1>404 Not Found</h1>;
 

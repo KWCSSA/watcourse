@@ -8,7 +8,7 @@ class CourseDetails extends React.Component {
 	state = { bookmarked: false };
 
 	componentDidMount() {
-		console.log(this.props);
+		console.log(this.props.match);
 	}
 
 	render() {

@@ -44,12 +44,12 @@ export default class NavBar extends React.Component {
 				path: '/courses',
 				text: '查询',
 				icon: 'search'
-			},
-			{
-				path: '/bookmarks',
-				text: '收藏',
-				icon: 'bookmark'
 			}
+			// {
+			// 	path: '/bookmarks',
+			// 	text: '收藏',
+			// 	icon: 'bookmark'
+			// }
 		];
 		return (
 			<Nav>
