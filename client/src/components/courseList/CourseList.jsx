@@ -137,7 +137,7 @@ class CourseList extends React.Component {
 			);
 		} else if (this.props.courseList && this.props.courseList.error) {
 			return (
-				<div className='h-100 w-100 d-flex justify-content-center align-items-center'>
+				<div className='h-100 w-100 d-flex justify-content-center align-items-center flex-column'>
 					<i className='material-icons' style={{ fontSize: '60px', color: '#ff0000', marginBottom: '10px' }}>
 						error
 					</i>
