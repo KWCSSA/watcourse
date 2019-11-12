@@ -14,3 +14,29 @@
 	max-height: 300px;
 	margin-bottom: 20px;
 }
+
+.home-app-addtohome {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 160px;
+	height: 50px;
+	border: 1px solid #808080;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	padding: 5px 2px 5px 2px;
+	text-decoration: none;
+	color: #000;
+}
+
+.home-app-addtohome:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+.home-app-addtohome-icon {
+	max-height: 100%;
+	max-width: 100%;
+	margin-right: 15px;
+}
