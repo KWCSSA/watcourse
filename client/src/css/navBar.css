@@ -2,6 +2,11 @@
 	width: 100%;
 	margin-right: 0px;
 	margin-left: 0px;
+	/* Prevent mobile fixed element flicker */
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
 }
 
 .navbar-option {
@@ -12,23 +17,48 @@
 	color: #000;
 	text-decoration: none;
 	font-weight: 700;
+	/* Prevent mobile fixed element flicker */
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
 }
 
 .inactive {
 	color: #808080;
 	font-weight: 400;
+	/* Prevent mobile fixed element flicker */
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
 }
 
 .navbar-option:hover {
 	color: #000;
 	text-decoration: none;
+	/* Prevent mobile fixed element flicker */
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
 }
 
 i.navbar-option-icon {
 	font-size: 35px;
+	/* Prevent mobile fixed element flicker */
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
 }
 
 .navbar-option-text {
 	font-size: 12px;
 	font-weight: inherit;
+	/* Prevent mobile fixed element flicker */
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
 }

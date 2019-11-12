@@ -4,6 +4,11 @@
 	height: 100vh;
 	width: 100vw;
 	background-color: #fff;
+	/* Prevent mobile fixed element flicker */
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
 }
 
 .app-area {
@@ -14,6 +19,11 @@
 	flex-direction: column;
 	padding-top: 45px;
 	padding-bottom: 74px;
+	/* Prevent mobile fixed element flicker */
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
 }
 
 .app-navs {
@@ -26,4 +36,9 @@
 	border-top: 1px solid #d3d3d3;
 	padding-top: 5px;
 	padding-bottom: 15px;
+	/* Prevent mobile fixed element flicker */
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
 }
