@@ -21,8 +21,9 @@ ReactDOM.render(
 	document.getElementById('root')
 );
 
-if (process.env.NODE_ENV === 'production') {
-	serviceWorker.register();
-} else {
-	serviceWorker.unregister();
-}
+// if (process.env.NODE_ENV === 'production') {
+// 	serviceWorker.register();
+// } else {
+// 	serviceWorker.unregister();
+// }
+serviceWorker.unregister();
