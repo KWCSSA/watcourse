@@ -13,6 +13,14 @@ export default class NavBar extends React.Component {
 		});
 	}
 
+	componentDidUpdate() {
+		if (this.state.activePath !== window.location.pathname) {
+			this.setState({
+				activePath: window.location.pathname
+			});
+		}
+	}
+
 	navClick(path) {
 		this.setState({
 			activePath: path

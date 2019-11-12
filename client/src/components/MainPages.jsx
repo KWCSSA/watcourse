@@ -7,9 +7,7 @@ import NavBar from './NavBar';
 import Home from './home/Home';
 import CourseList from './courseList/CourseList';
 import AppTitle from './AppTitle';
-
-const BookMarkList = () => <h1>Book Mark List</h1>;
-const NotFound404 = () => <h1>404 Not Found</h1>;
+import NotFound404 from './NotFound404';
 
 class MainPages extends React.Component {
 	render() {
@@ -20,7 +18,7 @@ class MainPages extends React.Component {
 					<Switch>
 						<Route exact path='/' component={Home} />
 						<Route exact path='/courses' component={CourseList} />
-						<Route exact path='/bookmarks' component={BookMarkList} />
+						{/* <Route exact path='/bookmarks' component={BookMarkList} /> */}
 						<Route component={NotFound404} />
 					</Switch>
 				</div>
