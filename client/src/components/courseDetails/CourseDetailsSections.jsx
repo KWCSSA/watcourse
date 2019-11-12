@@ -168,14 +168,14 @@ function CourseDetailsSections(props) {
 		return (
 			<div key={index} className='details-sections-root' style={style}>
 				<div className='details-sections-row'>
-					<div className='details-sections-col-l'>Class Number (班次编号)</div>
+					<div className='details-sections-col-l'>Class Number (班级编号)</div>
 					<div className='details-sections-col-m'>{classNumber}</div>
 					<div className='details-sections-col-r'>
 						{/* <i className='material-icons details-sections-star'>star</i> */}
 					</div>
 				</div>
 				<div className='details-sections-row'>
-					<div className='details-sections-col-l'>Section Name (班次名称)</div>
+					<div className='details-sections-col-l'>Section Name (班级名称)</div>
 					<div className='details-sections-col-rest'>{section}</div>
 				</div>
 				<div className='details-sections-row'>
@@ -194,13 +194,13 @@ function CourseDetailsSections(props) {
 				)}
 				{waitingCapacity > 0 ? (
 					<div className='details-sections-row'>
-						<div className='details-sections-col-l'>Waiting (候选人数)</div>
+						<div className='details-sections-col-l'>Waiting (等待人数)</div>
 						<div className='details-sections-col-rest'>{renderTotalCap(waitingTotal, waitingCapacity)}</div>
 					</div>
 				) : (
 					''
 				)}
-				<div className='details-sections-row'>Time slots (课程时间)</div>
+				<div className='details-sections-row'>Time slots (日程安排)</div>
 				<div className='details-sections-list'>{classes.map((timeSlot, index) => renderClass(timeSlot, index))}</div>
 				{note ? <div className='details-sections-row'>Note (备注): {note}</div> : ''}
 				<div className='details-sections-row' style={{ fontSize: '13px', color: '#808080' }}>
@@ -214,7 +214,7 @@ function CourseDetailsSections(props) {
 	return (
 		<React.Fragment>
 			<div className='details-part-title'>
-				{term} {year} Sections (课程班次)
+				{term} {year} Sections (课程班级)
 			</div>
 			<div className='details-part-body'>{props.sections.map((section, index) => renderSection(section, index))}</div>
 		</React.Fragment>
