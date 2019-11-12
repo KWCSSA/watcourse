@@ -1,0 +1,25 @@
+div.carousel-inner {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+a.carousel-control-prev {
+	height: 80px;
+	width: 10%;
+	top: auto;
+	bottom: 50%;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+a.carousel-control-next {
+	height: 80px;
+	width: 10%;
+	top: auto;
+	bottom: 50%;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+ol.carousel-indicators {
+	background-color: rgba(0, 0, 0, 0.3);
+}

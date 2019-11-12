@@ -35,7 +35,11 @@ class CourseDetails extends React.Component {
 			} = this.props.courseDetails;
 			return (
 				<React.Fragment>
-					<AppTitle displayReturn history={this.props.history} />
+					<AppTitle
+						displayReturn={this.props.history ? true : false}
+						displayGoHome={!this.props.history ? true : false}
+						history={this.props.history}
+					/>
 					<div className='details-root'>
 						<div className='details-code'>
 							{subject} {catalogNumber}
@@ -75,7 +79,11 @@ class CourseDetails extends React.Component {
 		} else if (this.props.courseDetails && this.props.courseDetails.error) {
 			return (
 				<React.Fragment>
-					<AppTitle displayReturn history={this.props.history} />
+					<AppTitle
+						displayReturn={this.props.history ? true : false}
+						displayGoHome={!this.props.history ? true : false}
+						history={this.props.history}
+					/>
 					<div className='details-root'>
 						<div className='h-100 w-100 d-flex justify-content-center align-items-center flex-column'>
 							<i className='material-icons' style={{ fontSize: '60px', color: '#ff0000', marginBottom: '10px' }}>
@@ -89,7 +97,11 @@ class CourseDetails extends React.Component {
 		} else {
 			return (
 				<React.Fragment>
-					<AppTitle displayReturn history={this.props.history} />
+					<AppTitle
+						displayReturn={this.props.history ? true : false}
+						displayGoHome={!this.props.history ? true : false}
+						history={this.props.history}
+					/>
 					<div className='details-root'>
 						<div className='h-100 w-100 d-flex justify-content-center align-items-center'>
 							<Spinner animation='border' style={{ height: '30px', width: '30px' }} />
