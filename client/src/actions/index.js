@@ -12,6 +12,8 @@ export const fetchCourseList = term => dispatch => {
 	axios.get(`${serverAddress}/api/courses/${term}`).then(response => {
 		if (!response.data.error) {
 			dispatch({ type: TYPES.FETCH_COURSE_LIST, payload: { term, courses: response.data.data } });
+		} else {
+			dispatch({ type: TYPES.FETCH_COURSE_LIST, payload: { error: true } });
 		}
 	});
 };
@@ -20,6 +22,8 @@ export const fetchCourseDetails = (term, subject, catalogNumber) => dispatch => 
 	axios.get(`${serverAddress}/api/course/${term}/${subject}/${catalogNumber}`).then(response => {
 		if (!response.data.error) {
 			dispatch({ type: TYPES.FETCH_COURSE_DETAILS, payload: response.data.data });
+		} else {
+			dispatch({ type: TYPES.FETCH_COURSE_DETAILS, payload: { error: true } });
 		}
 	});
 };

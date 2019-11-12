@@ -15,7 +15,8 @@ class CourseList extends React.Component {
 	state = {
 		list: null,
 		listToShow: null,
-		searchTerm: ''
+		searchTerm: '',
+		termUpdated: false
 	};
 
 	listRef = React.createRef();
@@ -28,7 +29,11 @@ class CourseList extends React.Component {
 	}
 
 	componentDidUpdate() {
-		if (this.props.courseList && JSON.stringify(this.state.list) !== JSON.stringify(this.props.courseList.courses)) {
+		if (
+			this.props.courseList &&
+			!this.props.courseList.error &&
+			JSON.stringify(this.state.list) !== JSON.stringify(this.props.courseList.courses)
+		) {
 			const sortedCourseList = this.props.courseList.courses.sort((courseA, courseB) => {
 				if (courseA.subject > courseB.subject) {
 					return 1;
@@ -38,6 +43,10 @@ class CourseList extends React.Component {
 					return parseInt(courseA.catalogNumber) - parseInt(courseB.catalogNumber);
 				}
 			});
+			if (this.state.termUpdated) {
+				this.props.updateSearchTerm('');
+				this.setState({ termUpdated: false });
+			}
 			this.setState({
 				list: sortedCourseList.slice(0),
 				listToShow: sortedCourseList.slice(0)
@@ -94,9 +103,9 @@ class CourseList extends React.Component {
 
 	handleSearchTermUpdate(value) {
 		this.setState({
-			listToShow: null
+			listToShow: null,
+			termUpdated: true
 		});
-
 		this.props.fetchCourseList(value);
 	}
 
@@ -125,6 +134,15 @@ class CourseList extends React.Component {
 						</AutoSizer>
 					</div>
 				</React.Fragment>
+			);
+		} else if (this.props.courseList && this.props.courseList.error) {
+			return (
+				<div className='h-100 w-100 d-flex justify-content-center align-items-center'>
+					<i className='material-icons' style={{ fontSize: '60px', color: '#ff0000', marginBottom: '10px' }}>
+						error
+					</i>
+					<h5>很抱歉，服务器错误，请检查网络</h5>
+				</div>
 			);
 		} else {
 			return (

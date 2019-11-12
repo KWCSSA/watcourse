@@ -21,7 +21,7 @@ class CourseDetails extends React.Component {
 	}
 
 	render() {
-		if (this.props.courseDetails) {
+		if (this.props.courseDetails && !this.props.courseDetails.error) {
 			const {
 				title,
 				subject,
@@ -41,17 +41,21 @@ class CourseDetails extends React.Component {
 							{subject} {catalogNumber}
 						</div>
 						<div className='details-title'>{title}</div>
-						<div className='details-section-title'>Description (简介)</div>
-						<div className='details-section-body'>{description}</div>
-						{prerequisites ? <div className='details-section-title'>Prerequisites (选修条件)</div> : ''}
-						{prerequisites ? <div className='details-section-body'>{prerequisites}</div> : ''}
-						{antirequisites ? <div className='details-section-title'>Antirequisites (与下列课程冲突)</div> : ''}
-						{antirequisites ? <div className='details-section-body'>{antirequisites}</div> : ''}
-						{corequisites ? <div className='details-section-title'>Corequisites (可共修课程)</div> : ''}
-						{corequisites ? <div className='details-section-body'>{corequisites}</div> : ''}
-						{termsOffered ? <div className='details-section-title'>Terms Offered (提供此课的学期)</div> : ''}
-						{termsOffered ? (
-							<div className='details-section-body'>
+						<div className='details-part-title'>Description (简介)</div>
+						<div className='details-part-body'>{description}</div>
+						{prerequisites ? <div className='details-part-title'>Prerequisites (选修条件)</div> : ''}
+						{prerequisites ? <div className='details-part-body'>{prerequisites}</div> : ''}
+						{antirequisites ? <div className='details-part-title'>Antirequisites (与下列课程冲突)</div> : ''}
+						{antirequisites ? <div className='details-part-body'>{antirequisites}</div> : ''}
+						{corequisites ? <div className='details-part-title'>Corequisites (可共修课程)</div> : ''}
+						{corequisites ? <div className='details-part-body'>{corequisites}</div> : ''}
+						{termsOffered && termsOffered.length > 0 ? (
+							<div className='details-part-title'>Terms Offered (提供此课的学期)</div>
+						) : (
+							''
+						)}
+						{termsOffered && termsOffered.length > 0 ? (
+							<div className='details-part-body'>
 								{termsOffered
 									.map(term => {
 										if (term === 'F') return 'Fall';
@@ -65,6 +69,20 @@ class CourseDetails extends React.Component {
 							''
 						)}
 						{sections ? <CourseDetailsSections sections={sections} term={this.props.match.params.term} /> : ''}
+					</div>
+				</React.Fragment>
+			);
+		} else if (this.props.courseDetails && this.props.courseDetails.error) {
+			return (
+				<React.Fragment>
+					<AppTitle displayReturn history={this.props.history} />
+					<div className='details-root'>
+						<div className='h-100 w-100 d-flex justify-content-center align-items-center flex-column'>
+							<i className='material-icons' style={{ fontSize: '60px', color: '#ff0000', marginBottom: '10px' }}>
+								error
+							</i>
+							<h5>很抱歉，查找的课程信息不存在</h5>
+						</div>
 					</div>
 				</React.Fragment>
 			);
