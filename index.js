@@ -9,11 +9,23 @@ const logger = require('./utils/logger');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/watcourse', {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-	useCreateIndex: true
-});
+if (process.env.NODE_ENV === 'production') {
+	mongoose.connect(
+		`mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@localhost:27017/watcourse?authSource=admin`,
+		{
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			useCreateIndex: true
+		}
+	);
+} else {
+	mongoose.connect('mongodb://localhost/watcourse', {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true
+	});
+}
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'DB Connection error:'));
 db.once('open', () => {

@@ -97,7 +97,9 @@ function CourseDetailsSections(props) {
 		}
 
 		const { instructors, location, date } = timeSlot;
-		var weekdayStyles = parseDayStyles(date.weekdays);
+		if (!date.is_tba && date.weekdays) {
+			var weekdayStyles = parseDayStyles(date.weekdays);
+		}
 		return (
 			<div className='details-sections-timeslot-root' key={index}>
 				<div className='details-sections-row'>
@@ -116,13 +118,17 @@ function CourseDetailsSections(props) {
 						{!date.is_tba && date.end_time && date.start_time ? `${date.start_time} - ${date.end_time}` : '待定'}
 					</div>
 				</div>
-				<div className='details-sections-row'>
-					<div style={weekdayStyles[0]}>周一</div>
-					<div style={weekdayStyles[1]}>周二</div>
-					<div style={weekdayStyles[2]}>周三</div>
-					<div style={weekdayStyles[3]}>周四</div>
-					<div style={weekdayStyles[4]}>周五</div>
-				</div>
+				{!date.is_tba && date.weekdays ? (
+					<div className='details-sections-row'>
+						<div style={weekdayStyles[0]}>周一</div>
+						<div style={weekdayStyles[1]}>周二</div>
+						<div style={weekdayStyles[2]}>周三</div>
+						<div style={weekdayStyles[3]}>周四</div>
+						<div style={weekdayStyles[4]}>周五</div>
+					</div>
+				) : (
+					''
+				)}
 			</div>
 		);
 	}
@@ -162,14 +168,14 @@ function CourseDetailsSections(props) {
 		return (
 			<div key={index} className='details-sections-root' style={style}>
 				<div className='details-sections-row'>
-					<div className='details-sections-col-l'>Class Number (课号)</div>
+					<div className='details-sections-col-l'>Class Number (班次编号)</div>
 					<div className='details-sections-col-m'>{classNumber}</div>
 					<div className='details-sections-col-r'>
 						{/* <i className='material-icons details-sections-star'>star</i> */}
 					</div>
 				</div>
 				<div className='details-sections-row'>
-					<div className='details-sections-col-l'>Section ()</div>
+					<div className='details-sections-col-l'>Section Name (班次名称)</div>
 					<div className='details-sections-col-rest'>{section}</div>
 				</div>
 				<div className='details-sections-row'>
@@ -208,7 +214,7 @@ function CourseDetailsSections(props) {
 	return (
 		<React.Fragment>
 			<div className='details-part-title'>
-				{term} {year} Sections (课？)
+				{term} {year} Sections (课程班次)
 			</div>
 			<div className='details-part-body'>{props.sections.map((section, index) => renderSection(section, index))}</div>
 		</React.Fragment>
