@@ -15,7 +15,12 @@
 		"type": "git",
 		"url": "git+https://github.com/KWCSSA/watcourse.git"
 	},
-	"keywords": [ "KWCSSA", "UW", "UWaterloo", "watcourse" ],
+	"keywords": [
+		"KWCSSA",
+		"UW",
+		"UWaterloo",
+		"watcourse"
+	],
 	"author": "Terry Wang",
 	"license": "MIT",
 	"bugs": {

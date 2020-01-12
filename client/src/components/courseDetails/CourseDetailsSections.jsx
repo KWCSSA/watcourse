@@ -17,13 +17,13 @@ function CourseDetailsSections(props) {
 	}
 
 	function renderTotalCap(total, cap) {
-		if (cap === total) {
+		if (total >= cap) {
 			return (
 				<span style={{ color: '#979797' }}>
 					{total} / {cap}
 				</span>
 			);
-		} else if (cap - total < 10 && cap !== 0) {
+		} else if (cap !== 0 && total < cap && total >= cap - 10) {
 			return (
 				<span style={{ color: '#ff0000' }}>
 					{total} / {cap}
