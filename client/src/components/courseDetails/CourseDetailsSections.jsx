@@ -158,9 +158,9 @@ function CourseDetailsSections(props) {
 			lastUpdated
 		} = classSection;
 		var style = {};
-		if (capacity === total) {
+		if (total >= capacity) {
 			style.border = '1px solid #d3d3d3';
-		} else if (capacity - total < 10 && capacity !== 0) {
+		} else if (capacity !== 0 && total < capacity && total >= capacity - 10) {
 			style.border = '1px solid #ffa2a2';
 		} else {
 			style.border = '1px solid #a2d0a2';
